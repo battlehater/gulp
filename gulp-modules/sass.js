@@ -10,6 +10,6 @@ export default () =>
     gulp.src(config.path.src.sass, { sourcemaps: config.env === 'dev' })
         .pipe(sass(config.sass).on('error', sass.logError))
         .pipe(gulpIf(config[config.env].css.setPrefixes, autoprefixer()))
-        .pipe(gulpif(config[config.env].css.groupMedia, groupMedia()))
+        .pipe(gulpIf(config[config.env].css.groupMedia, groupMedia()))
         .pipe(gulp.dest(config.path[config.envFolder].css, {sourcemaps: '.'}))
         .pipe(server.stream())
